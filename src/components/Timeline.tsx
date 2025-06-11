@@ -6,62 +6,64 @@ import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timel
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
 
+interface TimelineElementProps {
+  icon: any;
+  date: string;
+  jobTitle: string;
+  location: string;
+  description: string;
+}
+
+function TimelineElement({icon, date, jobTitle, location, description}: TimelineElementProps) {
+  return <VerticalTimelineElement
+    className="vertical-timeline-element--work"
+    iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+    
+    icon={icon}
+    date={date}
+  >
+    <h3 className="vertical-timeline-element-title">{jobTitle}</h3>
+    <h4 className="vertical-timeline-element-subtitle">{location}</h4>
+    <p>
+      {description}
+    </p>
+  </VerticalTimelineElement>
+}
+
 function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
         <h1>Career History</h1>
         <VerticalTimeline>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-            contentArrowStyle={{ borderRight: '7px solid  white' }}
+          <TimelineElement 
+            icon={<FontAwesomeIcon icon={faBriefcase} />}
             date="2022 - present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            jobTitle="Technology Consultant"
+            location="Dallas, TX"
+            description="Full-stack Web Development, GenAI/LLM, Project Management, Business Development"
+          ></TimelineElement>
+          <TimelineElement
             icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Technology Consultant</h3>
-            <h4 className="vertical-timeline-element-subtitle">Dallas, TX</h4>
-            <p>
-              Full-stack Web Development, GenAI/LLM, Project Management, Business Development
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2020 - 2022"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            date="2021 - 2022"
+            jobTitle="Full Stack Engineer"
+            location="Laie, HI"
+            description="Frontend Development, Backend Development, User Experience, Team Leading"
+          ></TimelineElement>
+          <TimelineElement
             icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Full Stack Engineer</h3>
-            <h4 className="vertical-timeline-element-subtitle">Laie, HI</h4>
-            <p>
-              Frontend Development, Backend Development, User Experience, Team Leading
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
             date="2021 - 2021"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            jobTitle="Staff Engineer Intern"
+            location="Laie, HI"
+            description="Full-stack Development, API Development, User Experience"
+          ></TimelineElement>
+          <TimelineElement
             icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Staff Engineer Intern</h3>
-            <h4 className="vertical-timeline-element-subtitle">Laie, HI</h4>
-            <p>
-              Full-stack Development, API Development, User Experience
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
             date="2020 - 2020"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Data Analyst Intern</h3>
-            <h4 className="vertical-timeline-element-subtitle">Tokyo, Japan</h4>
-            <p>
-              Automation, Data Governance, Statistical Analysis
-            </p>
-          </VerticalTimelineElement>
+            jobTitle="Data Analyst Intern"
+            location="Tokyo, Japan"
+            description="Automation, Data Governance, Statistical Analysis"
+          ></TimelineElement>
         </VerticalTimeline>
       </div>
     </div>
