@@ -15,6 +15,7 @@ function getEnvVar(key: string): string {
 }
 const sid = getEnvVar('REACT_APP_EJS_SERVICE_ID');
 const secret = getEnvVar('REACT_APP_EJS_SERVICE_SECRET');
+const templateId = getEnvVar('REACT_APP_EJS_TEMPLATE_ID');
 
 function Contact() {
 
@@ -52,7 +53,7 @@ function Contact() {
       console.log(templateParams);
       emailjs.send(
         sid, 
-        'template_id', templateParams, 
+        templateId, templateParams, 
         secret
       ).then(
         (response: { status: number; text: string; }) => {
