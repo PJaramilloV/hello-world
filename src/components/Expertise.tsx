@@ -1,47 +1,39 @@
 import React from "react";
-import '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
-import Chip from '@mui/material/Chip';
+import '@fortawesome/free-regular-svg-icons';
+import { faRobot, faMagnifyingGlassChart,  } from '@fortawesome/free-solid-svg-icons';
+import { faDocker, } from '@fortawesome/free-brands-svg-icons';
 import '../assets/styles/Expertise.scss';
 import './Expertise-block'
 import ExpertiseBlock from "./Expertise-block";
 
-const labelsFirst = [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
-    "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
+const labelsML = [
+    "LangChain",
+    "Sklearn",
 ];
 
-const labelsSecond = [
+const labelsDataSci = [
+    "Pandas",
+    "R Tidyverse",
+    "Plotly",
+    "Seaborn",
+];
+
+const labelsSoftDev = [
+    "Linux",
+    "React",
+    "TypeScript",
+    "Flask",
+    "Django",
+    "Postman",
+    "Python",
+    "SQL",
+    "SparQL",
     "Git",
     "GitHub Actions",
     "Docker",
     "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
 ];
 
-const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
-];
 
 function Expertise() {
     return (
@@ -50,23 +42,23 @@ function Expertise() {
             <h1>Expertise</h1>
             <div className="skills-grid">
                 <ExpertiseBlock
-                    icon={faReact}
-                    stack={labelsFirst}
-                    topic="Full Stack Web Development"
-                    description="I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development."
+                    icon={faRobot}
+                    stack={labelsML}
+                    topic="ML & AI"
+                    description="If you got a dataset, I can extract it's full potential and help you build a model to extract insights, make predictions. I am familiar with Generative AI, LLMs, as well as traditional ML techniques."
+                />
+                <ExpertiseBlock
+                    icon={faMagnifyingGlassChart}
+                    stack={labelsDataSci}
+                    topic="Data Science"
+                    description="With a strong foundation in data analysis and visualization, as well as endless curiosity, I search and extract insights from data to determine patterns, trends, and the best vectors for decision-making."
                 />
 
                 <ExpertiseBlock
                     icon={faDocker}
-                    stack={labelsSecond}
-                    topic="DevOps & Automation"
-                    description="Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live."
-                />
-                <ExpertiseBlock
-                    icon={faPython}
-                    stack={labelsThird}
-                    topic="GenAI & LLM"
-                    description="Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making."
+                    stack={labelsSoftDev}
+                    topic="Software Development"
+                    description="You can count on me to develop software solutions that are efficient, scalable, and maintainable. I have experience in both front and back-end development, with a strong preference for back-end. Despite my preference, I am not afraid to get out of my comfort zone and learn new technologies to adapt to your tech-stack."
                 />
 
             </div>
