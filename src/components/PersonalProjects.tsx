@@ -1,5 +1,5 @@
 import React from "react";
-import CELL from '../assets/images/cellnoise.png';
+// import CELL from '../assets/images/cellnoise.png';
 import CELLVID from '../assets/videos/cellnoisedemo.mp4';
 import RDF from '../assets/images/rdf.png';
 import SHEETS from '../assets/images/sheets.png';
