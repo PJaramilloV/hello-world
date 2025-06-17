@@ -1,7 +1,7 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline}  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import TimelineElement from "./TimelineElement";
@@ -23,6 +23,13 @@ function Timeline() {
       <div className="items-container">
         <h1>Career History</h1>
         <VerticalTimeline>
+          <TimelineElement 
+            icon={<FontAwesomeIcon icon={faQuestion} />}
+            date="Tomorrow - The Future"
+            company="Your Company"
+            location="Wherever you are"
+            description="Let's build the future together! I am currently on the market, so if you have a project that you think I would be a good fit for, please don't hesitate to reach out."
+          ></TimelineElement>
           <TimelineElement 
             icon={icon(pucLogo)}
             date="Ago. 2024 - May. 2025"

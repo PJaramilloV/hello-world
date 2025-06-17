@@ -5,7 +5,7 @@ interface TimelineElementProps {
   icon: any;
   date: string;
   company?: string;
-  jobTitle: string;
+  jobTitle?: string;
   location: string;
   description: string;
 }
