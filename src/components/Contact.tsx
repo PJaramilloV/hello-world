@@ -1,10 +1,20 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
+
+function getEnvVar(key: string): string {
+  const value = process.env[key];
+  if (typeof value === 'undefined') {
+    return '';
+  }
+  return value;
+}
+const sid = getEnvVar('REACT_APP_EJS_SERVICE_ID');
+const secret = getEnvVar('REACT_APP_EJS_SERVICE_SECRET');
 
 function Contact() {
 
@@ -25,28 +35,37 @@ function Contact() {
     setEmailError(email === '');
     setMessageError(message === '');
 
-    /* Uncomment below if you want to enable the emailJS */
+    if (sid === undefined || secret === undefined) {
+      console.error('EmailJS service ID or secret is not defined in environment variables.');
+      return;
+    }
 
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
+    if (name !== '' && email !== '' && message !== '') {
+      var templateParams = {
+        name: name,
+        email: email,
+        message: message,
+        time: new Date().toLocaleString(),
+        title: `${name} would like to contact you`,
+      };
 
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
+      console.log(templateParams);
+      emailjs.send(
+        sid, 
+        'template_id', templateParams, 
+        secret
+      ).then(
+        (response: { status: number; text: string; }) => {
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        (error: any) => {
+          console.log('FAILED...', error);
+        },
+      );
+      setName('');
+      setEmail('');
+      setMessage('');
+    }
   };
 
   return (
@@ -78,14 +97,14 @@ function Contact() {
               <TextField
                 required
                 id="outlined-required"
-                label="Email / Phone"
+                label="Email"
                 placeholder="How can I reach you?"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
+                helperText={emailError ? "Please enter your email" : ""}
               />
             </div>
             <TextField
