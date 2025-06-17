@@ -49,6 +49,13 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 }
 
+.contact-form {
+  .MuiInputBase-input {
+    background-color: #ffffff00;
+    z-index: 1;
+  }
+}
+
 .navigation-bar-responsive {
   span, p {
     color: #0d1116;
