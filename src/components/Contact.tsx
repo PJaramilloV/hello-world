@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
-const env = import.meta.env;
+const env = import.meta.env as unknown as Record<string, string | undefined>;
 
 function getEnvVar(key: string): string {
   const value = env[key];
@@ -29,7 +29,7 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
@@ -80,8 +80,6 @@ function Contact() {
           <Box
             ref={form}
             component="form"
-            noValidate
-            autoComplete="off"
             className='contact-form'
           >
             <div className='form-flex'>
