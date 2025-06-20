@@ -6,16 +6,18 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
+const env = import.meta.env;
+
 function getEnvVar(key: string): string {
-  const value = process.env[key];
+  const value = env[key];
   if (typeof value === 'undefined') {
     return '';
   }
   return value;
 }
-const sid = getEnvVar('REACT_APP_EJS_SERVICE_ID');
-const secret = getEnvVar('REACT_APP_EJS_SERVICE_SECRET');
-const templateId = getEnvVar('REACT_APP_EJS_TEMPLATE_ID');
+const sid        = getEnvVar('VITE_EJS_SERVICE_ID');
+const secret     = getEnvVar('VITE_EJS_SERVICE_SECRET');
+const templateId = getEnvVar('VITE_EJS_TEMPLATE_ID');
 
 function Contact() {
 
