@@ -6,9 +6,13 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
-const sid = process.env.REACT_APP_EJS_SERVICE_ID
-const secret = process.env.REACT_APP_EJS_SERVICE_SECRET
-const templateId  = process.env.REACT_APP_EJS_TEMPLATE_ID
+const sid = process.env.REACT_APP_EJS_SERVICE_ID!
+const secret = process.env.REACT_APP_EJS_SERVICE_SECRET!
+const templateId  = process.env.REACT_APP_EJS_TEMPLATE_ID!
+
+if (!sid || !secret || !templateId){
+  throw new Error('Environment variables are undefined')
+}
 
 function Contact() {
 
