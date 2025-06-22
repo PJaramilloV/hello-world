@@ -10,10 +10,6 @@ const sid = process.env.REACT_APP_EJS_SERVICE_ID!
 const secret = process.env.REACT_APP_EJS_SERVICE_SECRET!
 const templateId  = process.env.REACT_APP_EJS_TEMPLATE_ID!
 
-if (!sid || !secret || !templateId){
-  throw new Error('Environment variables are undefined')
-}
-
 function Contact() {
 
   const [name, setName] = useState<string>('');
@@ -33,12 +29,9 @@ function Contact() {
     setEmailError(email === '');
     setMessageError(message === '');
 
-    if (sid === undefined || secret === undefined) {
-      console.error('EmailJS service ID or secret is not defined in environment variables.');
-      return;
-    }
-
-    if (name !== '' && email !== '' && message !== '') {
+    if (!sid || !secret || !templateId){
+      setMessage(`Email Service is currently unavailable, please contact me through linked-in: https://www.linkedin.com/in/pablo-jaramillo-vesperinas/\nHere is your original message:\n${message}`)
+    } else if (name !== '' && email !== '' && message !== '') {
       var templateParams = {
         name: name,
         email: email,
