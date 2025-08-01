@@ -6,18 +6,10 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
-const env = import.meta.env;
-
-function getEnvVar(key: string): string {
-  const value = env[key];
-  if (typeof value === 'undefined') {
-    return '';
-  }
-  return value;
-}
-const sid        = getEnvVar('VITE_EJS_SERVICE_ID');
-const secret     = getEnvVar('VITE_EJS_SERVICE_SECRET');
-const templateId = getEnvVar('VITE_EJS_TEMPLATE_ID');
+// EmailJS configuration
+const sid        = import.meta.env.VITE_EJS_SERVICE_ID;
+const secret     = import.meta.env.VITE_EJS_SERVICE_SECRET;
+const templateId = import.meta.env.VITE_EJS_TEMPLATE_ID;
 
 function Contact() {
 
@@ -29,7 +21,7 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
-  const form = useRef();
+  const form = useRef(null);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
