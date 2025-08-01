@@ -29,6 +29,7 @@ function Timeline() {
             company="Your Company"
             location="Wherever you are"
             description="Let's build the future together! I am currently on the market, so if you have a project that you think I would be a good fit for, please don't hesitate to reach out."
+            future={true}
           ></TimelineElement>
           <TimelineElement 
             icon={icon(pucLogo)}
