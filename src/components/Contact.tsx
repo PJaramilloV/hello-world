@@ -21,18 +21,22 @@ function Contact() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
 
+  const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
   const form = useRef(null);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
+    setEmail(email.toLowerCase());
 
     setNameError(name === '');
-    setEmailError(email === '');
+    setEmailError(email === '' || !emailRegex.test(email));
     setMessageError(message === '');
+    const valid = !(nameError || emailError || messageError);
 
     if (!sid || !secret || !templateId){
       setMessage(`Email Service is currently unavailable, please contact me through linked-in: https://www.linkedin.com/in/pablo-jaramillo-vesperinas/\nHere is your original message:\n${message}`)
-    } else if (name !== '' && email !== '' && message !== '') {
+    } else if (valid) {
       var templateParams = {
         name: name,
         email: email,
@@ -49,14 +53,15 @@ function Contact() {
       ).then(
         (response: { status: number; text: string; }) => {
           console.log('SUCCESS!', response.status, response.text);
+          setMessage(`Thank you for your message, ${name}! Check your email to verify it has reached me, if so, then I will get back to you as soon as possible!`)
         },
         (error: any) => {
           console.log('FAILED...', error);
+          setMessage(`Sorry, there was an error sending your message [ERROR](${error.text}).\nPlease try again later.\n\nHere is your original message:\n${message}`);
         },
       );
       setName('');
       setEmail('');
-      setMessage('');
     }
   };
 
