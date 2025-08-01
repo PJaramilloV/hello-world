@@ -16,10 +16,10 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Env Variables
-      run: 
-        echo "VITE_EJS_SERVICE_ID=$VITE_EJS_SERVICE_ID" >> .env &&
-        echo "VITE_EJS_SERVICE_SECRET=$VITE_EJS_SERVICE_SECRET" >> .env &&
-        echo "VITE_EJS_TEMPLATE_ID=$VITE_EJS_TEMPLATE_ID" >> .env 
+      run: |
+        echo "VITE_EJS_SERVICE_ID=${{ secrets.VITE_EJS_SERVICE_ID }}" >> .env &&
+        echo "VITE_EJS_SERVICE_SECRET=${{ secrets.VITE_EJS_SERVICE_SECRET }}" >> .env &&
+        echo "VITE_EJS_TEMPLATE_ID=${{ secrets.VITE_EJS_TEMPLATE_ID }}" >> .env 
 
     - name: Test Env
       run:
