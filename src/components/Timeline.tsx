@@ -12,10 +12,20 @@ const pucLogo = "https://media.licdn.com/dms/image/v2/C560BAQFysZUmLktRnw/compan
 const umceLogo = "https://media.licdn.com/dms/image/v2/D4E0BAQHkE3YIUftGGA/company-logo_100_100/company-logo_100_100/0/1665761825242/umcecl_logo?e=1755734400&v=beta&t=eko6Yfu5dG39a--XyyqqaomO02NadaCsSZ5ytGdATxg";
 const gtcLogo = "https://empresasgtc.cl/wp-content/uploads/2024/04/cropped-ISOTIPO-1-150x150.png"
 const entelLogo = "https://media.licdn.com/dms/image/v2/C4E0BAQFxLpuMx2FKFw/company-logo_100_100/company-logo_100_100/0/1673956795717/entel_logo?e=1755734400&v=beta&t=-Es-x_WvqxLi8enseI-ykMMzFbzidSwu05id0yISKYE";
+const stefaniniLogo = "https://media.licdn.com/dms/image/v2/D4D0BAQEa5W-Cy5MMPA/company-logo_100_100/company-logo_100_100/0/1719836715271/stefaninilatam_logo?e=1756944000&v=beta&t=Q23ivHfmlG3PKO9F2pGuDf5dE7vx_fJ9QwJAPf3Ws70";
 
 function icon(src: string) {
   return <img src={src} alt="logo" style={{ borderRadius: "50%", width: "100%", background:"white" }} />;
 }
+
+const future_work = <TimelineElement 
+  icon={<FontAwesomeIcon icon={faQuestion} />}
+  date="Tomorrow - The Future"
+  company="Your Company"
+  location="Wherever you are"
+  description="Let's build the future together! I am currently on the market, so if you have a project that you think I would be a good fit for, please don't hesitate to reach out."
+  future={true}
+></TimelineElement>
 
 function Timeline() {
   return (
@@ -23,13 +33,14 @@ function Timeline() {
       <div className="items-container">
         <h1>Career History</h1>
         <VerticalTimeline>
-          <TimelineElement 
-            icon={<FontAwesomeIcon icon={faQuestion} />}
-            date="Tomorrow - The Future"
-            company="Your Company"
-            location="Wherever you are"
-            description="Let's build the future together! I am currently on the market, so if you have a project that you think I would be a good fit for, please don't hesitate to reach out."
-            future={true}
+          {/* {future_work} */}
+          <TimelineElement
+            icon={icon(stefaniniLogo)}
+            date="Ago. 2025 - Present"
+            jobTitle="AI Consultant"
+            company="Stefanini Latam"
+            location="Santiago, Chile"
+            description="Just started working as an AI consultant for local clients."
           ></TimelineElement>
           <TimelineElement 
             icon={icon(pucLogo)}
