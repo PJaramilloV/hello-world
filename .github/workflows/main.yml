@@ -17,9 +17,9 @@ jobs:
 
     - name: Env Variables
       run: 
-        echo "VITE_EJS_SERVICE_ID=${{secrets.VITE_EJS_SERVICE_ID}}" >> .env &&
-        echo "VITE_EJS_SERVICE_SECRET=${{secrets.VITE_EJS_SERVICE_SECRET}}" >> .env &&
-        echo "VITE_EJS_TEMPLATE_ID=${{secrets.VITE_EJS_TEMPLATE_ID}}" >> .env 
+        echo "VITE_EJS_SERVICE_ID=${{vars.VITE_EJS_SERVICE_ID}}" >> .env &&
+        echo "VITE_EJS_SERVICE_SECRET=${{vars.VITE_EJS_SERVICE_SECRET}}" >> .env &&
+        echo "VITE_EJS_TEMPLATE_ID=${{vars.VITE_EJS_TEMPLATE_ID}}" >> .env 
 
     - name: Test Env
       run:
