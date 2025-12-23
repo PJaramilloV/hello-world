@@ -27,6 +27,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check Env Existence
+        run: |
+          if [ -z "$VITE_EJS_SERVICE_ID" ]; then echo "ID is EMPTY"; else echo "ID is SET"; fi
+        env:
+          VITE_EJS_SERVICE_ID: ${{ secrets.VITE_EJS_SERVICE_ID }}
+
       - name: Build project
         run: npm run build
         env:
