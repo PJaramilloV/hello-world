@@ -6,7 +6,10 @@ import '../assets/styles/Expertise.scss';
 import './Expertise-block'
 import ExpertiseBlock from "./Expertise-block";
 
-const labelsML = [
+const labelsMLIA = [
+    "Bedrock", 
+    "Strands",
+    "Serverless",
     "LangChain",
     "Sklearn",
 ];
@@ -43,9 +46,9 @@ function Expertise() {
             <div className="skills-grid">
                 <ExpertiseBlock
                     icon={faRobot}
-                    stack={labelsML}
+                    stack={labelsMLIA}
                     topic="ML & AI"
-                    description="If you got a dataset, I can extract it's full potential and help you build a model to extract insights, make predictions. I am familiar with Generative AI, LLMs, as well as traditional ML techniques."
+                    description="If you got a dataset, I can extract it's full potential and help you build a model to extract insights, make predictions. I am familiar with Generative AI, LLMs, as well as traditional ML techotniques. Got expertize in AI agent orchestration, tools integration, management of Knowledge Bases, and more."
                 />
                 <ExpertiseBlock
                     icon={faMagnifyingGlassChart}
