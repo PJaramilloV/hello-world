@@ -29,17 +29,23 @@ function Contact() {
     e.preventDefault();
     setEmail(email.toLowerCase());
 
-    setNameError(name === '');
-    setEmailError(email === '' || !emailRegex.test(email));
-    setMessageError(message === '');
-    const valid = !(nameError || emailError || messageError);
+    const nameErr = name.trim() === '';
+    const emailLower = email.toLowerCase();
+    const emailErr = emailLower === '' || !emailRegex.test(emailLower);
+    const messageErr = message.trim() === '';
+
+    setNameError(nameErr);
+    setEmailError(emailErr);
+    setMessageError(messageErr);
+
+    const valid = !(nameErr || emailErr || messageErr);
 
     if (!sid || !secret || !templateId){
       setMessage(`Email Service is currently unavailable, please contact me through linked-in: https://www.linkedin.com/in/pablo-jaramillo-vesperinas/\nHere is your original message:\n${message}`)
     } else if (valid) {
       var templateParams = {
         name: name,
-        email: email,
+        email: emailLower,
         message: message,
         time: new Date().toLocaleString(),
         title: `${name} would like to contact you`,
